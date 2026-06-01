@@ -76,6 +76,7 @@ export type Guest = {
   title: string;
   company?: string;
   image?: string; // e.g. "/images/guests/barami-rai.jpg" — falls back to initials
+  imagePosition?: string; // CSS object-position to frame the face, e.g. "center 20%"
   bio: string[];
   socials: { x?: string; linkedin?: string; website?: string };
   episodeSlugs: string[];
@@ -87,6 +88,8 @@ export const GUESTS: Guest[] = [
     slug: "barami-rai",
     title: "CEO",
     company: "DTC Group",
+    image: "/images/guests/barami-rai.jpg",
+    imagePosition: "center 18%",
     bio: [
       "Barami Rai is the CEO of DTC Group and the founder behind Crypto & Coffee.",
       "On Episode 1, he shares the story of why the show exists and what he hopes it becomes.",
@@ -99,6 +102,8 @@ export const GUESTS: Guest[] = [
     slug: "rememberme",
     title: "Founder",
     company: "RememberUs & IDBW",
+    image: "/images/guests/rememberme.jpg",
+    imagePosition: "center 30%",
     bio: [
       "RememberMe is the founder of RememberUs and part of the IDBW team.",
       "On Episode 2, the conversation digs into an opportunity in Web3 that most people are overlooking.",

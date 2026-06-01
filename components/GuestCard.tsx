@@ -27,6 +27,7 @@ export function GuestCard({
             fill
             sizes={size === "sm" ? "110px" : "140px"}
             className="object-cover"
+            style={{ objectPosition: guest.imagePosition ?? "center" }}
           />
         ) : (
           <span

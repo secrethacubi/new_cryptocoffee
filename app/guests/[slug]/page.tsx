@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import {
   GUESTS,
@@ -55,13 +56,24 @@ export default function GuestProfile({
 
         <div className="mt-8 flex flex-col items-center gap-7 text-center sm:flex-row sm:items-center sm:text-left">
           <div
-            className="flex h-[150px] w-[150px] flex-none items-center justify-center rounded-full border border-line font-serif text-[48px] text-espresso/80"
+            className="relative flex h-[150px] w-[150px] flex-none items-center justify-center overflow-hidden rounded-full border border-line font-serif text-[48px] text-espresso/80"
             style={{
               background:
                 "radial-gradient(circle at 50% 40%, rgba(200,149,108,0.3), transparent 60%), linear-gradient(135deg,#2A2621,#14110E)",
             }}
           >
-            {initials(guest.name)}
+            {guest.image ? (
+              <Image
+                src={guest.image}
+                alt={guest.name}
+                fill
+                sizes="150px"
+                className="object-cover"
+                style={{ objectPosition: guest.imagePosition ?? "center" }}
+              />
+            ) : (
+              initials(guest.name)
+            )}
           </div>
           <div>
             <h1 className="font-serif text-[clamp(34px,5vw,52px)] font-normal leading-none">

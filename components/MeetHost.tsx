@@ -10,17 +10,18 @@ export function MeetHost() {
           <div className="grid items-center gap-10 md:grid-cols-[280px_1fr] md:gap-14 lg:grid-cols-[320px_1fr]">
             <div className="relative mx-auto aspect-square w-full max-w-[280px] overflow-hidden rounded-[20px] border border-line">
               <Image
-                src="/images/host-studio.jpg"
-                alt="Crypto & Coffee studio microphone"
+                src="/images/host-phil.jpg"
+                alt="Phil — host of Crypto & Coffee"
                 fill
                 sizes="(min-width: 1024px) 320px, (min-width: 768px) 280px, 280px"
                 className="object-cover"
+                style={{ objectPosition: "center 22%" }}
               />
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(circle at 50% 35%, rgba(200,149,108,0.16), transparent 60%), linear-gradient(135deg, rgba(20,17,14,0.30), rgba(20,17,14,0.72))",
+                    "radial-gradient(circle at 50% 30%, rgba(200,149,108,0.12), transparent 55%), linear-gradient(180deg, transparent 45%, rgba(20,17,14,0.55))",
                 }}
               />
             </div>
