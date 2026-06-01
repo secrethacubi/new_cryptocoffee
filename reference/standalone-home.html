@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto & Coffee — Meaningful conversations with the builders shaping tomorrow</title>
+<meta name="description" content="A Web3 culture & conversation platform. Meaningful conversations with the builders, thinkers, and creators shaping tomorrow — hosted by Phil.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Crypto & Coffee — A Web3 culture & conversation platform">
+<meta property="og:description" content="Meaningful conversations with the builders shaping tomorrow. No hype. No noise. Just good conversation.">
+<meta property="og:site_name" content="Crypto & Coffee">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@CryptoNCoffee_">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #0C0A09;
+  --bg-elevated: #1A1714;
+  --bg-card: #1E1B17;
+  --bg-card-hover: #262320;
+  --surface: #2A2621;
+  --border: #3D372F;
+  --border-subtle: #2E2A24;
+  --text: #FAF7F2;
+  --text-secondary: #B5AFA6;
+  --text-muted: #7D7771;
+  --espresso: #C8956C;
+  --espresso-bright: #E4B48E;
+  --espresso-deep: #8B5E3C;
+  --espresso-glow: rgba(200,149,108,0.12);
+  --gold: #D4A853;
+  --cream: #F5E6D3;
+  --red: #D46A6A;
+  --green: #7BC47F;
+  --blue: #6A9ED4;
+  --purple: #A67BD4;
+  --accent-gradient: linear-gradient(135deg, #C8956C, #D4A853);
+  --nav-h: 72px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* subtle grain overlay for depth */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ═══════════════════ BUTTONS ═══════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 26px;
+  border-radius: 40px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #1A0F08;
+  box-shadow: 0 4px 24px rgba(200,149,108,0.18);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(200,149,108,0.30);
+  filter: brightness(1.06);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--espresso);
+  color: var(--espresso-bright);
+  background: var(--espresso-glow);
+}
+.btn-sm { padding: 9px 20px; font-size: 14px; }
+
+/* ═══════════════════ NAVIGATION ═══════════════════ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(12,10,9,0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+.logo .mark { font-size: 22px; }
+.logo em { color: var(--espresso); font-style: italic; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 1.5px;
+  background: var(--espresso);
+  transition: width 0.25s ease;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* mobile overlay menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  background: rgba(12,10,9,0.97);
+  backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu a {
+  font-family: 'Instrument Serif', serif;
+  font-size: 32px;
+  color: var(--text);
+}
+.mobile-menu a:hover { color: var(--espresso); }
+.mobile-menu .close {
+  position: absolute;
+  top: 24px; right: 32px;
+  font-size: 34px;
+  color: var(--text-muted);
+  background: none; border: none; cursor: pointer;
+  line-height: 1;
+}
+.mobile-socials { display: flex; gap: 20px; margin-top: 12px; }
+.mobile-socials a { color: var(--text-muted); }
+.mobile-socials svg { width: 22px; height: 22px; }
+
+/* ═══════════════════ HERO ═══════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 900px 600px at 50% 35%, rgba(200,149,108,0.13), transparent 70%),
+    radial-gradient(ellipse 500px 500px at 82% 78%, rgba(212,168,83,0.07), transparent 70%),
+    radial-gradient(ellipse 600px 500px at 15% 85%, rgba(139,94,60,0.06), transparent 70%);
+  z-index: 0;
+}
+/* floating steam particles */
+.steam {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.steam span {
+  position: absolute;
+  bottom: -60px;
+  width: 6px; height: 6px;
+  background: radial-gradient(circle, rgba(200,149,108,0.5), transparent 70%);
+  border-radius: 50%;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.2; }
+  100% { transform: translateY(-100vh) translateX(40px) scale(2.2); opacity: 0; }
+}
+.hero-inner { position: relative; z-index: 1; max-width: 920px; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--espresso);
+  margin-bottom: 32px;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  background: rgba(26,23,20,0.5);
+}
+.hero-badge .live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 rgba(123,196,127,0.6);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(123,196,127,0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(123,196,127,0); }
+  100% { box-shadow: 0 0 0 0 rgba(123,196,127,0); }
+}
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(40px, 6.5vw, 76px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 26px;
+}
+.hero h1 em { color: var(--espresso); font-style: italic; }
+.hero .subtitle {
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 42px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+.hero-stats .stat strong {
+  display: block;
+  font-family: 'Instrument Serif', serif;
+  font-size: 30px;
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.2;
+}
+.hero-stats .stat span { text-transform: uppercase; letter-spacing: 1.5px; font-size: 11px; }
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: var(--text-muted);
+  animation: bounce 2.2s infinite;
+}
+.scroll-indicator svg { width: 22px; height: 22px; }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ═══════════════════ SECTION FRAME ═══════════════════ */
+.section { padding: 100px 0; }
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 44px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--espresso);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+h2 em { color: var(--espresso); font-style: italic; }
+.view-all {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--espresso);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+}
+.view-all:hover { gap: 11px; color: var(--espresso-bright); }
+
+/* ═══════════════════ EPISODES GRID ═══════════════════ */
+.episode-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.episode-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.episode-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.4);
+}
+.episode-card.featured { grid-column: span 1; }
+.thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #2A2621, #1A1714);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(200,149,108,0.10), transparent 60%);
+}
+.thumb .ep-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 54px;
+  color: rgba(250,247,242,0.10);
+}
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12,10,9,0.35);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.episode-card:hover .play-overlay { opacity: 1; }
+.play-overlay .play-btn {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transform: scale(0.8);
+  transition: transform 0.25s ease;
+}
+.episode-card:hover .play-btn { transform: scale(1); }
+.play-overlay svg { width: 22px; height: 22px; margin-left: 3px; color: #1A0F08; }
+.duration-tag {
+  position: absolute;
+  bottom: 10px; right: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: rgba(12,10,9,0.8);
+  padding: 3px 8px;
+  border-radius: 5px;
+  color: var(--cream);
+}
+.ep-body { padding: 20px 22px 24px; }
+.ep-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--espresso);
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.ep-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+.ep-guest { font-size: 14px; color: var(--text-muted); }
+
+/* ═══════════════════ ABOUT STRIP ═══════════════════ */
+.about-strip {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 56px;
+  overflow: hidden;
+}
+.about-strip .mission {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.3;
+  font-weight: 400;
+}
+.about-strip .mission em { color: var(--espresso); font-style: italic; }
+.about-strip p { color: var(--text-secondary); margin: 22px 0 28px; max-width: 520px; }
+.about-visual {
+  aspect-ratio: 4 / 5;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 40% 30%, rgba(200,149,108,0.22), transparent 55%),
+    linear-gradient(135deg, #2A2621, #14110E);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.about-visual .ph {
+  font-size: 64px;
+  opacity: 0.35;
+}
+
+/* ═══════════════════ MEET THE HOST ═══════════════════ */
+.host {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.host-photo {
+  aspect-ratio: 1;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(200,149,108,0.28), transparent 60%),
+    linear-gradient(135deg, #2A2621, #14110E);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.host-photo .ph { font-size: 90px; opacity: 0.4; }
+.host-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--espresso);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.host h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+.host p { color: var(--text-secondary); max-width: 560px; margin-bottom: 18px; }
+.host .coming-soon { color: var(--text-muted); font-style: italic; }
+.host-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 40px;
+  transition: all 0.2s ease;
+}
+.host-social:hover { border-color: var(--espresso); color: var(--espresso-bright); }
+.host-social svg { width: 16px; height: 16px; }
+
+/* ═══════════════════ FEATURED GUESTS ═══════════════════ */
+.guest-scroller {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 6px 4px 18px;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.guest-scroller::-webkit-scrollbar { display: none; }
+.guest-card {
+  flex: 0 0 auto;
+  width: 160px;
+  text-align: center;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+.guest-avatar {
+  width: 110px; height: 110px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(200,149,108,0.3), transparent 60%),
+    linear-gradient(135deg, #2A2621, #14110E);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  color: rgba(250,247,242,0.4);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.guest-card:hover .guest-avatar { border-color: var(--espresso); transform: translateY(-3px); }
+.guest-name { font-size: 15px; font-weight: 600; color: var(--text); }
+.guest-role { font-size: 12px; color: var(--text-muted); }
+
+/* ═══════════════════ PLATFORMS ═══════════════════ */
+.platforms { text-align: center; }
+.platforms .label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+.platform-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 44px;
+  flex-wrap: wrap;
+}
+.platform-row a {
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+.platform-row a:hover { color: var(--espresso-bright); transform: translateY(-3px); }
+.platform-row svg { width: 30px; height: 30px; }
+.platform-row .pname { font-size: 12px; letter-spacing: 0.5px; }
+.platform-row .soon {
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--espresso);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 20px;
+}
+
+/* ═══════════════════ NEWSLETTER ═══════════════════ */
+.newsletter {
+  background:
+    radial-gradient(ellipse 700px 400px at 50% 0%, rgba(200,149,108,0.12), transparent 70%),
+    var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 64px 48px;
+  text-align: center;
+}
+.newsletter h2 { margin-bottom: 14px; }
+.newsletter p { color: var(--text-secondary); max-width: 480px; margin: 0 auto 32px; }
+.news-form {
+  display: flex;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.news-form input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 14px 22px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  transition: border-color 0.2s ease;
+}
+.news-form input::placeholder { color: var(--text-muted); }
+.news-form input:focus { outline: none; border-color: var(--espresso); }
+.news-success {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  color: var(--espresso-bright);
+}
+.news-hint { font-size: 12px; color: var(--text-muted); margin-top: 16px; }
+
+/* ═══════════════════ PARTNER CTA ═══════════════════ */
+.partner-cta {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: center;
+  padding: 72px 40px;
+}
+.partner-cta .eyebrow { margin-bottom: 14px; }
+.partner-cta h2 { margin-bottom: 24px; }
+.supported-by { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 22px; }
+.sponsor-logos { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; opacity: 0.5; }
+.sponsor-logos .logo-ph {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  color: var(--text-muted);
+  filter: grayscale(1);
+}
+
+/* ═══════════════════ FOOTER ═══════════════════ */
+.footer {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-subtle);
+  padding: 72px 0 36px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.4fr;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+.footer .logo { margin-bottom: 18px; }
+.footer-tagline { color: var(--text-secondary); font-size: 14px; max-width: 300px; margin-bottom: 22px; }
+.footer-news { display: flex; gap: 8px; max-width: 320px; }
+.footer-news input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 10px 18px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+}
+.footer-news input:focus { outline: none; border-color: var(--espresso); }
+.footer-col h4 {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--espresso);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 12px; }
+.footer-col a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s ease; }
+.footer-col a:hover { color: var(--text); }
+.footer-socials { display: flex; gap: 16px; margin-bottom: 22px; }
+.footer-socials a {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+}
+.footer-socials a:hover { border-color: var(--espresso); color: var(--espresso-bright); transform: translateY(-2px); }
+.footer-socials svg { width: 18px; height: 18px; }
+.footer-bottom {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.footer-bottom .legal { display: flex; gap: 20px; }
+.footer-bottom a:hover { color: var(--text-secondary); }
+
+/* ═══════════════════ SCROLL REVEAL ═══════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════ RESPONSIVE ═══════════════════ */
+@media (max-width: 980px) {
+  .episode-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-strip { grid-template-columns: 1fr; padding: 40px; }
+  .about-visual { aspect-ratio: 16/10; max-height: 320px; }
+  .host { grid-template-columns: 240px 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .container { padding: 0 22px; }
+  .nav-links { display: none; }
+  .nav-right .btn { display: none; }
+  .hamburger { display: flex; }
+  .section { padding: 72px 0; }
+  .episode-grid { grid-template-columns: 1fr; }
+  .host { grid-template-columns: 1fr; text-align: center; }
+  .host-photo { max-width: 240px; margin: 0 auto; }
+  .host-social, .host p { margin-left: auto; margin-right: auto; }
+  .news-form { flex-direction: column; }
+  .news-form .btn { justify-content: center; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .hero-stats { gap: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#top" class="logo"><span class="mark">☕</span> Crypto <em>&</em> Coffee</a>
+    <ul class="nav-links">
+      <li><a href="#episodes">Episodes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#guests">Guests</a></li>
+      <li><a href="#partner">Partner</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#newsletter" class="btn btn-primary btn-sm">Subscribe</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="closeMenu" aria-label="Close menu">&times;</button>
+  <a href="#episodes">Episodes</a>
+  <a href="#about">About</a>
+  <a href="#guests">Guests</a>
+  <a href="#partner">Partner</a>
+  <a href="#newsletter">Newsletter</a>
+  <a href="#newsletter" class="btn btn-primary" style="font-family:'DM Sans';font-size:15px;">Subscribe ☕</a>
+  <div class="mobile-socials">
+    <a href="https://x.com/CryptoNCoffee_" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://youtube.com/@CryptoAndCoffeeShow" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg></a>
+    <a href="https://instagram.com/cryptoandcoffee_/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.06.42 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.37-2.23.42-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.42-.37-1.06-.42-2.23C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.37 2.23-.42C8.42 2.2 8.8 2.2 12 2.2zm0 1.95c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.22.55.47.94.88 1.35.41.41.8.66 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 3.32a4.53 4.53 0 1 1 0 9.06 4.53 4.53 0 0 1 0-9.06zm0 7.47a2.94 2.94 0 1 0 0-5.88 2.94 2.94 0 0 0 0 5.88zm5.77-7.67a1.06 1.06 0 1 1-2.12 0 1.06 1.06 0 0 1 2.12 0z"/></svg></a>
+    <a href="https://tiktok.com/@cryptoandcoffee" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 5.82a5.3 5.3 0 0 1-3.77-1.57 5.3 5.3 0 0 1-1.4-2.7h-3.3v13.4a2.69 2.69 0 1 1-1.84-2.55v-3.4a6.1 6.1 0 0 0-.85-.06 6.06 6.06 0 1 0 6.06 6.06V8.9a8.55 8.55 0 0 0 5.1 1.68V7.27a5.3 5.3 0 0 1-.0-.0z"/></svg></a>
+  </div>
+</div>
+
+<span id="top"></span>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="steam" id="steam"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="live-dot"></span> A Web3 Culture & Conversation Platform</div>
+    <h1>Meaningful conversations with the builders <em>shaping tomorrow</em></h1>
+    <p class="subtitle">No hype. No noise. Just two people, a cup of coffee, and the space to go deep — hosted by Phil.</p>
+    <div class="hero-ctas">
+      <a href="#episodes" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Watch Latest Episode
+      </a>
+      <a href="#newsletter" class="btn btn-outline">Subscribe</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>30+</strong><span>Episodes</span></div>
+      <div class="stat"><strong>6</strong><span>Platforms</span></div>
+      <div class="stat"><strong>10K+</strong><span>Community</span></div>
+    </div>
+  </div>
+  <a href="#episodes" class="scroll-indicator" aria-label="Scroll down">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
+</header>
+
+<!-- ═══════════════ LATEST EPISODES ═══════════════ -->
+<section class="section" id="episodes">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Fresh from the studio</div>
+        <h2>Latest <em>Episodes</em></h2>
+      </div>
+      <a href="#" class="view-all">View all episodes →</a>
+    </div>
+    <div class="episode-grid">
+
+      <article class="episode-card featured reveal">
+        <div class="thumb">
+          <span class="ep-num">12</span>
+          <div class="play-overlay"><span class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <span class="duration-tag">45:12</span>
+        </div>
+        <div class="ep-body">
+          <div class="ep-meta">EP #12 · MAY 2026</div>
+          <div class="ep-title">The Future of DeFi</div>
+          <div class="ep-guest">with a builder reshaping decentralized finance</div>
+        </div>
+      </article>
+
+      <article class="episode-card reveal">
+        <div class="thumb">
+          <span class="ep-num">11</span>
+          <div class="play-overlay"><span class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <span class="duration-tag">38:04</span>
+        </div>
+        <div class="ep-body">
+          <div class="ep-meta">EP #11 · MAY 2026</div>
+          <div class="ep-title">Building in Public</div>
+          <div class="ep-guest">with a founder who shares every win & loss</div>
+        </div>
+      </article>
+
+      <article class="episode-card reveal">
+        <div class="thumb">
+          <span class="ep-num">10</span>
+          <div class="play-overlay"><span class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <span class="duration-tag">52:30</span>
+        </div>
+        <div class="ep-body">
+          <div class="ep-meta">EP #10 · APR 2026</div>
+          <div class="ep-title">AI, Agents & the Next Web</div>
+          <div class="ep-guest">with a researcher at the AI x Web3 frontier</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT / MISSION STRIP ═══════════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-strip reveal">
+      <div>
+        <div class="eyebrow">More than a podcast</div>
+        <div class="mission">A platform for the conversations that shape the future of <em>Web3, AI, and culture.</em></div>
+        <p>Every guest is hand-selected. Every conversation is built on real research, real curiosity, and real respect — the kind of talk you'd genuinely enjoy over coffee.</p>
+        <a href="#" class="btn btn-outline btn-sm">Learn More →</a>
+      </div>
+      <div class="about-visual"><span class="ph">☕</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MEET THE HOST ═══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="host reveal">
+      <div class="host-photo"><span class="ph">🎙️</span></div>
+      <div>
+        <div class="host-label">Host & Partner</div>
+        <h3>Phil</h3>
+        <p class="coming-soon">Bio coming soon — Phil's story, why he started Crypto & Coffee, and what drives every conversation.</p>
+        <a href="https://x.com/CryptoNCoffee_" class="host-social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Follow Phil
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURED GUESTS ═══════════════ -->
+<section class="section" id="guests">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Social proof</div>
+        <h2>Conversations with <em>remarkable people</em></h2>
+      </div>
+      <a href="#" class="view-all">See all guests →</a>
+    </div>
+    <div class="guest-scroller reveal">
+      <div class="guest-card"><div class="guest-avatar">👤</div><div class="guest-name">Guest Name</div><div class="guest-role">Founder, Protocol</div></div>
+      <div class="guest-card"><div class="guest-avatar">👤</div><div class="guest-name">Guest Name</div><div class="guest-role">Investor</div></div>
+      <div class="guest-card"><div class="guest-avatar">👤</div><div class="guest-name">Guest Name</div><div class="guest-role">Creator</div></div>
+      <div class="guest-card"><div class="guest-avatar">👤</div><div class="guest-name">Guest Name</div><div class="guest-role">Builder</div></div>
+      <div class="guest-card"><div class="guest-avatar">👤</div><div class="guest-name">Guest Name</div><div class="guest-role">Researcher</div></div>
+      <div class="guest-card"><div class="guest-avatar">👤</div><div class="guest-name">Guest Name</div><div class="guest-role">Operator</div></div>
+      <div class="guest-card"><div class="guest-avatar">👤</div><div class="guest-name">Guest Name</div><div class="guest-role">Artist</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PLATFORMS ═══════════════ -->
+<section class="section">
+  <div class="container platforms reveal">
+    <div class="label">Watch & Listen Everywhere</div>
+    <div class="platform-row">
+      <a href="https://youtube.com/@CryptoAndCoffeeShow">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg>
+        <span class="pname">YouTube</span>
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.5 17.3a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.36.22.47.69.25 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 1 1-.54-1.8c4.36-1.32 9.78-.68 13.49 1.6.44.27.58.85.31 1.29zm.13-3.4C15.73 8.3 8.9 8.08 5.2 9.2a1.12 1.12 0 1 1-.65-2.15C8.8 5.76 16.34 6.02 20.5 8.49a1.12 1.12 0 1 1-1.15 1.92z"/></svg>
+        <span class="pname">Spotify</span>
+        <span class="soon">Soon</span>
+      </a>
+      <a href="https://x.com/CryptoNCoffee_">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span class="pname">X / Spaces</span>
+      </a>
+      <a href="https://tiktok.com/@cryptoandcoffee">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 5.82a5.3 5.3 0 0 1-3.77-1.57 5.3 5.3 0 0 1-1.4-2.7h-3.3v13.4a2.69 2.69 0 1 1-1.84-2.55v-3.4a6.1 6.1 0 0 0-.85-.06 6.06 6.06 0 1 0 6.06 6.06V8.9a8.55 8.55 0 0 0 5.1 1.68V7.27z"/></svg>
+        <span class="pname">TikTok</span>
+      </a>
+      <a href="https://instagram.com/cryptoandcoffee_/">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.06.42 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.37-2.23.42-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.42-.37-1.06-.42-2.23C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.37 2.23-.42C8.42 2.2 8.8 2.2 12 2.2zm0 4.17a5.63 5.63 0 1 0 0 11.26 5.63 5.63 0 0 0 0-11.26zm0 9.29a3.66 3.66 0 1 1 0-7.32 3.66 3.66 0 0 1 0 7.32zm5.77-9.51a1.31 1.31 0 1 1-2.63 0 1.31 1.31 0 0 1 2.63 0z"/></svg>
+        <span class="pname">Instagram</span>
+      </a>
+      <a href="https://linkedin.com/company/crypto-coffee-show/">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        <span class="pname">LinkedIn</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ NEWSLETTER ═══════════════ -->
+<section class="section" id="newsletter">
+  <div class="container">
+    <div class="newsletter reveal">
+      <h2>☕ Stay in the <em>loop</em></h2>
+      <p>Get weekly insights from the best conversations in Web3 & beyond — straight to your inbox.</p>
+      <form class="news-form" id="newsForm">
+        <input type="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" class="btn btn-primary">Join →</button>
+      </form>
+      <div class="news-hint">No spam. Unsubscribe anytime.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PARTNER CTA ═══════════════ -->
+<section class="partner-cta" id="partner">
+  <div class="container reveal">
+    <div class="supported-by">Trusted by partners in Web3</div>
+    <div class="sponsor-logos" style="margin-bottom:40px;">
+      <span class="logo-ph">DTC Group</span>
+      <span class="logo-ph">Partner</span>
+      <span class="logo-ph">Partner</span>
+    </div>
+    <div class="eyebrow">Partnership</div>
+    <h2>Want to partner with <em>Crypto & Coffee?</em></h2>
+    <a href="#" class="btn btn-primary">Partner With Us →</a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo"><span class="mark">☕</span> Crypto <em>&</em> Coffee</a>
+        <p class="footer-tagline">Meaningful conversations with the builders, thinkers, and creators shaping tomorrow.</p>
+        <form class="footer-news">
+          <input type="email" placeholder="Join the newsletter" aria-label="Email address">
+          <button type="submit" class="btn btn-primary btn-sm">→</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#episodes">Episodes</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#guests">Guests</a></li>
+          <li><a href="#partner">Partner With Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Along</h4>
+        <div class="footer-socials">
+          <a href="https://x.com/CryptoNCoffee_" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://youtube.com/@CryptoAndCoffeeShow" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg></a>
+          <a href="https://instagram.com/cryptoandcoffee_/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.06.42 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.37-2.23.42-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.42-.37-1.06-.42-2.23C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.37 2.23-.42C8.42 2.2 8.8 2.2 12 2.2zm0 4.17a5.63 5.63 0 1 0 0 11.26 5.63 5.63 0 0 0 0-11.26zm0 9.29a3.66 3.66 0 1 1 0-7.32 3.66 3.66 0 0 1 0 7.32zm5.77-9.51a1.31 1.31 0 1 1-2.63 0 1.31 1.31 0 0 1 2.63 0z"/></svg></a>
+          <a href="https://tiktok.com/@cryptoandcoffee" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 5.82a5.3 5.3 0 0 1-3.77-1.57 5.3 5.3 0 0 1-1.4-2.7h-3.3v13.4a2.69 2.69 0 1 1-1.84-2.55v-3.4a6.1 6.1 0 0 0-.85-.06 6.06 6.06 0 1 0 6.06 6.06V8.9a8.55 8.55 0 0 0 5.1 1.68V7.27z"/></svg></a>
+          <a href="https://linkedin.com/company/crypto-coffee-show/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="https://facebook.com/61574422497951/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.02 4.39 11.01 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.08 24 18.09 24 12.07z"/></svg></a>
+        </div>
+        <ul>
+          <li><a href="#newsletter">Subscribe to the newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Crypto & Coffee Show. All rights reserved.</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav background on scroll
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Mobile menu
+const menu = document.getElementById('mobileMenu');
+document.getElementById('hamburger').addEventListener('click', () => menu.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click', () => menu.classList.remove('open'));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+// Scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Steam particles
+const steam = document.getElementById('steam');
+for (let i = 0; i < 14; i++) {
+  const s = document.createElement('span');
+  s.style.left = Math.random() * 100 + '%';
+  s.style.animationDuration = (10 + Math.random() * 12) + 's';
+  s.style.animationDelay = (Math.random() * 12) + 's';
+  steam.appendChild(s);
+}
+
+// Newsletter success state
+document.getElementById('newsForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  this.outerHTML = '<div class="news-success">☕ You\'re in! Check your inbox.</div>';
+});
+</script>
+</body>
+</html>
