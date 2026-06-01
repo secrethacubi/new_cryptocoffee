@@ -163,6 +163,7 @@ export type BlogPost = {
   category: string;
   readingTime: string;
   excerpt: string;
+  image?: string; // hero/thumbnail — falls back to a branded ☕ placeholder
   body: string[];
   relatedEpisodeSlug?: string;
   featured?: boolean;
@@ -187,6 +188,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: "4 min read",
     excerpt:
       "The format isn't an accident. Here's the thinking behind The First Sip, The Last Sip, and everything in between.",
+    image: "/images/blog/conversations.jpg",
     body: [
       "When we started Crypto & Coffee, we made one rule: no scripts. The best moments in any conversation are the ones nobody planned, and you can't plan your way into them.",
       "The First Sip exists to lower the temperature. Before we talk about protocols or raises or the state of the market, we just talk like people. It changes everything that comes after.",
@@ -205,6 +207,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: "6 min read",
     excerpt:
       "A few quiet shifts are reshaping Web3 — and the biggest opportunities are the ones nobody's talking about.",
+    image: "/images/blog/opportunity.jpg",
     body: [
       "Every cycle, attention rushes to the loudest narrative. Meanwhile the real openings tend to be quieter, slower, and easier to dismiss.",
       "We unpack a few of those overlooked corners — and why timing and attention often matter more than the idea itself.",
@@ -220,6 +223,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Guest Spotlights",
     readingTime: "5 min read",
     excerpt: "The founder of DTC Group on why he built Crypto & Coffee — in his own words.",
+    image: "/images/guests/barami-rai.jpg",
     body: [
       "Barami doesn't talk like most founders. He's more interested in the long game — relationships, trust, and the kind of conversations that compound over time.",
       "We caught up with him after Episode 1 to go deeper on the story behind the show.",
@@ -236,6 +240,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: "6 min read",
     excerpt:
       "Software that can hold value and act on your behalf is no longer science fiction. A plain-English primer.",
+    image: "/images/blog/web3-101.jpg",
     body: [
       "An onchain agent is software that can make decisions and move value without a human pressing the button each time. That's it — and that's a lot.",
       "Here's what they can and can't do today, minus the hype.",

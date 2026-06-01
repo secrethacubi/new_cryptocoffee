@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { BLOG_POSTS, getPost, getEpisode, guestName, initials } from "@/lib/content";
 import { SiteShell } from "@/components/SiteShell";
@@ -62,17 +63,28 @@ export default function BlogPostPage({
           </div>
         </div>
 
-        {/* Hero image placeholder */}
+        {/* Hero image */}
         <div
-          className="mt-8 flex aspect-[16/8] items-center justify-center rounded-2xl border border-line-subtle"
+          className="relative mt-8 flex aspect-[16/8] items-center justify-center overflow-hidden rounded-2xl border border-line-subtle"
           style={{
             background:
               "radial-gradient(circle at 50% 40%, rgba(200,149,108,0.15), transparent 60%), linear-gradient(135deg,#2A2621,#14110E)",
           }}
         >
-          <span className="text-[44px] opacity-20" aria-hidden>
-            ☕
-          </span>
+          {post.image ? (
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              sizes="(min-width: 760px) 760px, 90vw"
+              className="object-cover"
+              priority
+            />
+          ) : (
+            <span className="text-[44px] opacity-20" aria-hidden>
+              ☕
+            </span>
+          )}
         </div>
 
         {/* Body */}

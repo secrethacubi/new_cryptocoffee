@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/content";
 
@@ -21,10 +22,20 @@ export function BlogCard({
         }`}
         style={{ background: "linear-gradient(135deg,#2A2621,#14110E)" }}
       >
-        <span className="text-[40px] opacity-20" aria-hidden>
-          ☕
-        </span>
-        <span className="absolute left-4 top-4 rounded-full bg-bg/70 px-3 py-1 text-[11px] text-espresso">
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes={featured ? "(min-width: 768px) 50vw, 90vw" : "(min-width: 768px) 33vw, 90vw"}
+            className="object-cover"
+          />
+        ) : (
+          <span className="text-[40px] opacity-20" aria-hidden>
+            ☕
+          </span>
+        )}
+        <span className="absolute left-4 top-4 z-10 rounded-full bg-bg/70 px-3 py-1 text-[11px] text-espresso">
           {post.category}
         </span>
       </div>

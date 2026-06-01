@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SiteShell } from "@/components/SiteShell";
 import { PageHeader } from "@/components/PageHeader";
 import { NewsletterForm } from "@/components/NewsletterForm";
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const PRODUCTS = [
-  { name: "Branded Coffee Mug", emoji: "☕" },
-  { name: "Espresso Hoodie", emoji: "🧥" },
-  { name: "C&C Cap", emoji: "🧢" },
-  { name: "Gift Kit + QR Cards", emoji: "🎁" },
+  { name: "Branded Coffee Mug", image: "/images/shop/mug.jpg" },
+  { name: "Espresso Hoodie", image: "/images/shop/hoodie.jpg" },
+  { name: "C&C Cap", image: "/images/shop/cap.jpg" },
+  { name: "Gift Kit + QR Cards", image: "/images/shop/gift-kit.jpg" },
 ];
 
 export default function ShopPage() {
@@ -36,15 +37,19 @@ export default function ShopPage() {
             <Reveal key={p.name} delay={i * 0.06}>
               <div className="overflow-hidden rounded-2xl border border-line-subtle bg-bg-card">
                 <div
-                  className="flex aspect-square items-center justify-center"
+                  className="relative aspect-square"
                   style={{
                     background:
                       "radial-gradient(circle at 50% 40%, rgba(200,149,108,0.18), transparent 60%), linear-gradient(135deg,#2A2621,#14110E)",
                   }}
                 >
-                  <span className="text-[56px] opacity-60" aria-hidden>
-                    {p.emoji}
-                  </span>
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, 50vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-5">
                   <h2 className="font-serif text-[18px]">{p.name}</h2>
