@@ -27,7 +27,7 @@ export function AboutStrip() {
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line lg:aspect-[4/5]">
               <Image
                 src="/images/about-coffee.jpg"
-                alt="Freshly roasted coffee beans"
+                alt="Freshly pulled espresso, ground coffee, and roasted beans on a wooden board"
                 fill
                 sizes="(min-width: 1024px) 40vw, 90vw"
                 className="object-cover"
