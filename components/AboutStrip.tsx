@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "./Reveal";
 
 export function AboutStrip() {
@@ -23,16 +24,21 @@ export function AboutStrip() {
                 Learn More →
               </a>
             </div>
-            <div
-              className="flex aspect-[16/10] items-center justify-center rounded-2xl border border-line lg:aspect-[4/5]"
-              style={{
-                background:
-                  "radial-gradient(circle at 40% 30%, rgba(200,149,108,0.22), transparent 55%), linear-gradient(135deg,#2A2621,#14110E)",
-              }}
-            >
-              <span className="text-6xl opacity-35" aria-hidden>
-                ☕
-              </span>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line lg:aspect-[4/5]">
+              <Image
+                src="/images/about-coffee.jpg"
+                alt="Freshly roasted coffee beans"
+                fill
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(circle at 40% 30%, rgba(200,149,108,0.18), transparent 55%), linear-gradient(135deg, rgba(20,17,14,0.35), rgba(20,17,14,0.78))",
+                }}
+              />
             </div>
           </div>
         </Reveal>

@@ -75,6 +75,7 @@ export type Guest = {
   slug: string;
   title: string;
   company?: string;
+  image?: string; // e.g. "/images/guests/barami-rai.jpg" — falls back to initials
   bio: string[];
   socials: { x?: string; linkedin?: string; website?: string };
   episodeSlugs: string[];

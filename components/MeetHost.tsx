@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { XIcon } from "./icons";
 
@@ -7,16 +8,21 @@ export function MeetHost() {
       <div className="mx-auto max-w-container px-6 md:px-10">
         <Reveal>
           <div className="grid items-center gap-10 md:grid-cols-[280px_1fr] md:gap-14 lg:grid-cols-[320px_1fr]">
-            <div
-              className="mx-auto flex aspect-square w-full max-w-[280px] items-center justify-center rounded-[20px] border border-line"
-              style={{
-                background:
-                  "radial-gradient(circle at 50% 35%, rgba(200,149,108,0.28), transparent 60%), linear-gradient(135deg,#2A2621,#14110E)",
-              }}
-            >
-              <span className="text-[90px] opacity-40" aria-hidden>
-                🎙️
-              </span>
+            <div className="relative mx-auto aspect-square w-full max-w-[280px] overflow-hidden rounded-[20px] border border-line">
+              <Image
+                src="/images/host-studio.jpg"
+                alt="Crypto & Coffee studio microphone"
+                fill
+                sizes="(min-width: 1024px) 320px, (min-width: 768px) 280px, 280px"
+                className="object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 35%, rgba(200,149,108,0.16), transparent 60%), linear-gradient(135deg, rgba(20,17,14,0.30), rgba(20,17,14,0.72))",
+                }}
+              />
             </div>
             <div className="text-center md:text-left">
               <div className="mb-2.5 text-[11px] font-semibold uppercase tracking-[3px] text-espresso">
